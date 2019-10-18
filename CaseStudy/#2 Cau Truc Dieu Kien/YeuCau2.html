@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let Name = "Phan Duy Phương";
+    let IdCard = "123456789";
+    let Brithday = "1990/02/25";
+    let Email = "phanduyphuong1990@gmail.com";
+    let Address = "Đà Nẵng";
+    let Type = "Diamond";
+    let Discount = "10";
+    let NumberOfCompanying = "2";
+    let Rendays = "10";
+    let TypeService = "Villa";
+    let TypeRoom = "Business";
+    let Age = ageCustomer();
+    let value = parseInt(prompt("1.Show Infomation Customer" + "\n" + "2.Edit Infomation Customer" + "\n" +
+        "3.Show The Amount To Be Paid Alter Discount "));
+    // let total_sale = 0;
+    switch (value) {
+        case 1:
+            Showinfomation();
+            break;
+        case 2:
+            EditInfomation();
+            Showinfomation();
+            break;
+        case 3:
+            Moneypays();
+            alert("Total Pays Alter Discount Condition: " + Pays);
+            break;
+        default:
+            alert(Failed);
+    }
+
+    function Showinfomation() {
+        alert("1.Name Customer: " + Name + "\n" + "2.Id Card Customer: " + IdCard + "\n" + "3.Birthday Customer: " + Brithday + "\n" +
+            "4.Email Customer: " + Email + "\n" + "5.Address Customer: " + Address + "\n" + "6.Type Customer: " + Type + "\n" +
+            "7.Discount: " + Discount + "\n" + "8.Number Of Accompanying: " + NumberOfCompanying + "\n" + "9.Ren Day: " + Rendays
+            + "\n" + "10.Type Service: " + TypeService + "\n" + "11.Type Room: " + TypeRoom + "\n" + "Age Customer: " + Age);
+    }
+
+    function EditInfomation() {
+        let Edit = parseInt(prompt("Choose Infomation Customer You Want Edit: " + "\n" + "1.Name Customer: " + Name + "\n" + "2.Id Card Customer: " + IdCard + "\n" + "3.Birthday Customer: " + Brithday + "\n" +
+            "4.Email Customer: " + Email + "\n" + "5.Address Customer: " + Address + "\n" + "6.Type Customer: " + Type + "\n" +
+            "7.Discount: " + Discount + "\n" + "8.Number Of Accompanying: " + NumberOfCompanying + "\n" + "9.Ren Day: " + Rendays
+            + "\n" + "10.Type Service: " + TypeService + "\n" + "11.Type Room: " + TypeRoom));
+        switch (Edit) {
+            case 1:
+                Name = prompt("Enter your Name: ");
+                break;
+            case 2:
+                IdCad = prompt("Enter Your IdCard: ");
+                break;
+            case 3:
+                Brithday = prompt("Enter your Birthday: ");
+                break;
+            case 4:
+                Email = prompt("Enter your Email: ");
+                break;
+            case 5:
+                Address = prompt("Enter your Address: ");
+                break;
+            case 6:
+                Type = prompt("Enter Type Customer: ");
+                break;
+            case 7:
+                Discount = prompt("Enter Discount: ");
+                break;
+            case 8:
+                NumberOfCompanying = prompt("Enter Number Of Accompanying: ");
+                break;
+            case 9:
+                Rendays = prompt("Enter Ren Day: ");
+                break;
+            case 10:
+                TypeService = prompt("Enter Type Service: ");
+                break;
+            case 11:
+                TypeRoom = prompt("Enter Type Room: ");
+                break;
+            default:
+                alert("Failed");
+        }
+    }
+
+    function Moneypays() {
+        let Mo = 0;
+        let Ney = 0;
+        let Pays = 0;
+        //Giam gia theo loai dich vu
+        if (TypeService === "Villa") {
+            Mo = 500;
+        } else if (TypeService === "House") {
+            Mo = 300;
+        } else {
+            Mo = 100;
+        }
+
+        //Giam Gia Theo Dia Chi
+        switch (Address) {
+            case "Đà Nẵng":
+                Ney = 20;
+                if (Age > 30) {
+                    Ney = 2;
+                }else {
+                    Ney =1;
+                }
+                break;
+            case "Huế":
+                Ney = 10;
+                break;
+            case "Quảng Nam":
+                Ney = 5;
+                break;
+        }
+       
+        if (Rendays > 7) {
+            Ney = 30;
+        } else {
+            if (Rendays > 5) {
+                Ney = 20;
+            } else {
+                if (Rendays > 2) {
+                    Ney = 10;
+                }
+            }
+        }
+        switch (Type) {
+            case "Diamond":
+                Ney = 15;
+                break;
+            case "Platium":
+                Ney = 10;
+                break;
+            case "Gold":
+                Ney = 5;
+                break;
+            case "Silver":
+                Ney = 2;
+                break;
+            case "Member":
+                Ney = 0;
+                break;
+        }
+            Pays = Rendays * Mo * (1 - Discount / 100) - Ney;
+            alert(Pays);
+            
+    }
+    function ageCustomer() {
+        let currentYear = new Date().getFullYear();
+        let brithday = new Date(Brithday).getFullYear();
+        let Age = currentYear - brithday;
+        return Age;
+    }
+
+
+</script>
+
+</body>
+</html>
